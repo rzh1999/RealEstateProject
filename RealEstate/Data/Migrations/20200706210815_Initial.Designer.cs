@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RealEstate.Data;
 
 namespace RealEstate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200706210815_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,31 +50,10 @@ namespace RealEstate.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "43d231f3-1da0-44ff-8b4c-8cd793bf79a9",
-                            ConcurrencyStamp = "c66efb18-ab2a-4e4e-bde1-7de924740fad",
-                            Name = "Client",
-                            NormalizedName = "CLIENT"
-                        },
-                        new
-                        {
-                            Id = "31a15852-8791-4af0-a390-821b7c6c696f",
-                            ConcurrencyStamp = "b1a5c13b-da85-4860-bf1c-47781b71f3f7",
-                            Name = "Realtor",
-                            NormalizedName = "REALTOR"
-                        },
-                        new
-                        {
-                            Id = "a543736e-9275-4b89-9947-fd6d2577ac43",
-                            ConcurrencyStamp = "3709563d-cc6e-4270-9c21-4fba09ad1dcd",
-                            Name = "LoanOfficer",
-                            NormalizedName = "LOANOFFICER"
-                        },
-                        new
-                        {
-                            Id = "a74f548f-566a-411e-af0c-9dc9efe25915",
-                            ConcurrencyStamp = "6eb58d5f-0e9a-4132-bffa-d9684d59a190",
-                            Name = "Closing",
-                            NormalizedName = "CLOSING"
+                            Id = "55336bc5-70c9-4bcf-817a-2f4530e9ec64",
+                            ConcurrencyStamp = "5490e7d2-c40e-4f8e-8ff3-8b0d4cd939f6",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
                         });
                 });
 

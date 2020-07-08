@@ -3,21 +3,19 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RealEstate.Data;
 
-namespace RealEstate.Data.Migrations
+namespace RealEstate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200706213113_updatedroles")]
-    partial class updatedroles
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.4")
+                .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -50,31 +48,38 @@ namespace RealEstate.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "43d231f3-1da0-44ff-8b4c-8cd793bf79a9",
-                            ConcurrencyStamp = "c66efb18-ab2a-4e4e-bde1-7de924740fad",
+                            Id = "e32d74fb-559c-424d-996c-ee0c75aadca5",
+                            ConcurrencyStamp = "12d8dbc8-975b-4257-9f00-7f0bc417a99a",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         },
                         new
                         {
-                            Id = "31a15852-8791-4af0-a390-821b7c6c696f",
-                            ConcurrencyStamp = "b1a5c13b-da85-4860-bf1c-47781b71f3f7",
+                            Id = "df3d83b3-85cf-49a3-a8f7-4584837857bd",
+                            ConcurrencyStamp = "cba021cd-922c-4b0c-98db-51648e6315c6",
                             Name = "Realtor",
                             NormalizedName = "REALTOR"
                         },
                         new
                         {
-                            Id = "a543736e-9275-4b89-9947-fd6d2577ac43",
-                            ConcurrencyStamp = "3709563d-cc6e-4270-9c21-4fba09ad1dcd",
+                            Id = "6a7f2869-c934-43f5-8814-0f9852ad060e",
+                            ConcurrencyStamp = "4656df2e-c7d5-41d1-b0b7-7fd4b873ce05",
                             Name = "LoanOfficer",
                             NormalizedName = "LOANOFFICER"
                         },
                         new
                         {
-                            Id = "a74f548f-566a-411e-af0c-9dc9efe25915",
-                            ConcurrencyStamp = "6eb58d5f-0e9a-4132-bffa-d9684d59a190",
+                            Id = "de33131e-2e33-4f89-bfb4-9f7f5f5b992e",
+                            ConcurrencyStamp = "1119dd09-bba9-4671-9856-d8b61b097fee",
                             Name = "Closing",
                             NormalizedName = "CLOSING"
+                        },
+                        new
+                        {
+                            Id = "20c85059-d326-4d6e-a31b-a8134019bd78",
+                            ConcurrencyStamp = "ba136da0-1398-4966-9da4-92787317d686",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
                         });
                 });
 
@@ -247,6 +252,237 @@ namespace RealEstate.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("RealEstate.Models.Address", b =>
+                {
+                    b.Property<int>("AddressId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Latitude")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Longitude")
+                        .HasColumnType("int");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StreetAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Zip")
+                        .HasColumnType("int");
+
+                    b.HasKey("AddressId");
+
+                    b.ToTable("Address");
+                });
+
+            modelBuilder.Entity("RealEstate.Models.Checklist", b =>
+                {
+                    b.Property<int>("ChecklistId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("DepositPaid")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsClearToClose")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsClosed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsInspected")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsOfferMade")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsUnderContract")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ChecklistId");
+
+                    b.ToTable("Checklist");
+                });
+
+            modelBuilder.Entity("RealEstate.Models.Client", b =>
+                {
+                    b.Property<int>("ClientId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AddressId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ApprovalDate")
+                        .HasColumnType("date");
+
+                    b.Property<double>("ApprovedAmount")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("ChecklistId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ClosingDate")
+                        .HasColumnType("date");
+
+                    b.Property<int?>("ClosingRepId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DOB")
+                        .HasColumnType("date");
+
+                    b.Property<double>("DepositAmount")
+                        .HasColumnType("float");
+
+                    b.Property<string>("EmailAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdentityUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("InspectionDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("LoanOfficerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RealtorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SocialSecurityNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TypeOfClient")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ClientId");
+
+                    b.HasIndex("AddressId");
+
+                    b.HasIndex("ChecklistId");
+
+                    b.HasIndex("ClosingRepId");
+
+                    b.HasIndex("IdentityUserId");
+
+                    b.HasIndex("LoanOfficerId");
+
+                    b.HasIndex("RealtorId");
+
+                    b.ToTable("Client");
+                });
+
+            modelBuilder.Entity("RealEstate.Models.ClosingRep", b =>
+                {
+                    b.Property<int>("ClosingRepId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmailAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LicenseNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ClosingRepId");
+
+                    b.ToTable("ClosingRep");
+                });
+
+            modelBuilder.Entity("RealEstate.Models.LoanOfficer", b =>
+                {
+                    b.Property<int>("LoanOfficerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmailAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LicenseNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LoanOfficerId");
+
+                    b.ToTable("LoanOfficer");
+                });
+
+            modelBuilder.Entity("RealEstate.Models.Realtor", b =>
+                {
+                    b.Property<int>("RealtorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmailAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LicenseNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RealtorId");
+
+                    b.ToTable("Realtor");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -296,6 +532,35 @@ namespace RealEstate.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("RealEstate.Models.Client", b =>
+                {
+                    b.HasOne("RealEstate.Models.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RealEstate.Models.Checklist", "Checklist")
+                        .WithMany()
+                        .HasForeignKey("ChecklistId");
+
+                    b.HasOne("RealEstate.Models.ClosingRep", "ClosingRep")
+                        .WithMany()
+                        .HasForeignKey("ClosingRepId");
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId");
+
+                    b.HasOne("RealEstate.Models.LoanOfficer", "LoanOfficer")
+                        .WithMany()
+                        .HasForeignKey("LoanOfficerId");
+
+                    b.HasOne("RealEstate.Models.Realtor", "Realtor")
+                        .WithMany()
+                        .HasForeignKey("RealtorId");
                 });
 #pragma warning restore 612, 618
         }

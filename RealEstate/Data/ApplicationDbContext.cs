@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RealEstate.Models;
 
 namespace RealEstate.Data
 {
@@ -13,6 +14,8 @@ namespace RealEstate.Data
             : base(options)
         {
         }
+
+       
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -36,8 +39,17 @@ namespace RealEstate.Data
                                               {
                                                   Name = "Closing",
                                                   NormalizedName = "CLOSING"
+                                              },
+                                              new IdentityRole
+                                              {
+                                                  Name = "Admin",
+                                                  NormalizedName = "ADMIN"
                                               }
             );
         }
+
+        public DbSet<RealEstate.Models.Client> Client { get; set; }
+
+        public DbSet<RealEstate.Models.Address> Address { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RealEstate.ActionFilters
 {
-    public class GlobalRouting
+    public class GlobalRouting : IActionFilter
     {
      
             private readonly ClaimsPrincipal _claimsPrincipal;
@@ -23,7 +23,7 @@ namespace RealEstate.ActionFilters
                 {
                     if (_claimsPrincipal.IsInRole("Client"))
                     {
-                        context.Result = new RedirectToActionResult("Index",
+                        context.Result = new RedirectToActionResult("CreateClient",
                         "Clients", null);
                     }
                     else if (_claimsPrincipal.IsInRole("Realtor"))

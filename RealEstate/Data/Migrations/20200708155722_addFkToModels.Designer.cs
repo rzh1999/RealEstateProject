@@ -3,19 +3,21 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RealEstate.Data;
 
-namespace RealEstate.Migrations
+namespace RealEstate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200708155722_addFkToModels")]
+    partial class addFkToModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.5")
+                .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -48,16 +50,31 @@ namespace RealEstate.Migrations
                     b.HasData(
                         new
                         {
-
-                            Name = "Closing",
-                            NormalizedName = "CLOSING"
+                            Id = "323cf86e-aff1-4b6f-b9e6-1087f1f542af",
+                            ConcurrencyStamp = "fc914200-2ecb-40e2-abd5-c373db8b6376",
+                            Name = "Client",
+                            NormalizedName = "CLIENT"
                         },
                         new
                         {
-                            Id = "20c85059-d326-4d6e-a31b-a8134019bd78",
-                            ConcurrencyStamp = "ba136da0-1398-4966-9da4-92787317d686",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
+                            Id = "3a9e383e-374d-47e1-a09a-52ba4844b829",
+                            ConcurrencyStamp = "8c502b47-4d33-40b1-9530-6620872b59fd",
+                            Name = "Realtor",
+                            NormalizedName = "REALTOR"
+                        },
+                        new
+                        {
+                            Id = "af96485f-55f5-46e1-9a6c-35ed8ac925b2",
+                            ConcurrencyStamp = "51cd0143-935f-460c-bc9a-1140c907a93c",
+                            Name = "LoanOfficer",
+                            NormalizedName = "LOANOFFICER"
+                        },
+                        new
+                        {
+                            Id = "e2558ac8-8176-4454-a3c8-0a6bd3bd36e4",
+                            ConcurrencyStamp = "33725da9-db4d-4209-9573-b8cf98775f67",
+                            Name = "Closing",
+                            NormalizedName = "CLOSING"
                         });
                 });
 
@@ -309,21 +326,13 @@ namespace RealEstate.Migrations
                     b.Property<double>("ApprovedAmount")
                         .HasColumnType("float");
 
-<<<<<<< HEAD:RealEstate/Migrations/ApplicationDbContextModelSnapshot.cs
-                    b.Property<int?>("ChecklistId")
-=======
                     b.Property<int>("ChecklistId")
->>>>>>> b6970488aa89ce8ae83c2b983c83d546620e7ffd:RealEstate/Data/Migrations/ApplicationDbContextModelSnapshot.cs
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ClosingDate")
                         .HasColumnType("date");
 
-<<<<<<< HEAD:RealEstate/Migrations/ApplicationDbContextModelSnapshot.cs
-                    b.Property<int?>("ClosingRepId")
-=======
                     b.Property<int>("ClosingRepId")
->>>>>>> b6970488aa89ce8ae83c2b983c83d546620e7ffd:RealEstate/Data/Migrations/ApplicationDbContextModelSnapshot.cs
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("DOB")
@@ -347,21 +356,13 @@ namespace RealEstate.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD:RealEstate/Migrations/ApplicationDbContextModelSnapshot.cs
-                    b.Property<int?>("LoanOfficerId")
-=======
                     b.Property<int>("LoanOfficerId")
->>>>>>> b6970488aa89ce8ae83c2b983c83d546620e7ffd:RealEstate/Data/Migrations/ApplicationDbContextModelSnapshot.cs
                         .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD:RealEstate/Migrations/ApplicationDbContextModelSnapshot.cs
-                    b.Property<int?>("RealtorId")
-=======
                     b.Property<int>("RealtorId")
->>>>>>> b6970488aa89ce8ae83c2b983c83d546620e7ffd:RealEstate/Data/Migrations/ApplicationDbContextModelSnapshot.cs
                         .HasColumnType("int");
 
                     b.Property<int>("SocialSecurityNumber")
@@ -403,12 +404,9 @@ namespace RealEstate.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD:RealEstate/Migrations/ApplicationDbContextModelSnapshot.cs
-=======
                     b.Property<string>("IdentityUserId")
                         .HasColumnType("nvarchar(450)");
 
->>>>>>> b6970488aa89ce8ae83c2b983c83d546620e7ffd:RealEstate/Data/Migrations/ApplicationDbContextModelSnapshot.cs
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
@@ -420,11 +418,8 @@ namespace RealEstate.Migrations
 
                     b.HasKey("ClosingRepId");
 
-<<<<<<< HEAD:RealEstate/Migrations/ApplicationDbContextModelSnapshot.cs
-=======
                     b.HasIndex("IdentityUserId");
 
->>>>>>> b6970488aa89ce8ae83c2b983c83d546620e7ffd:RealEstate/Data/Migrations/ApplicationDbContextModelSnapshot.cs
                     b.ToTable("ClosingRep");
                 });
 
@@ -444,12 +439,9 @@ namespace RealEstate.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD:RealEstate/Migrations/ApplicationDbContextModelSnapshot.cs
-=======
                     b.Property<string>("IdentityUserId")
                         .HasColumnType("nvarchar(450)");
 
->>>>>>> b6970488aa89ce8ae83c2b983c83d546620e7ffd:RealEstate/Data/Migrations/ApplicationDbContextModelSnapshot.cs
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
@@ -461,11 +453,8 @@ namespace RealEstate.Migrations
 
                     b.HasKey("LoanOfficerId");
 
-<<<<<<< HEAD:RealEstate/Migrations/ApplicationDbContextModelSnapshot.cs
-=======
                     b.HasIndex("IdentityUserId");
 
->>>>>>> b6970488aa89ce8ae83c2b983c83d546620e7ffd:RealEstate/Data/Migrations/ApplicationDbContextModelSnapshot.cs
                     b.ToTable("LoanOfficer");
                 });
 
@@ -485,12 +474,9 @@ namespace RealEstate.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD:RealEstate/Migrations/ApplicationDbContextModelSnapshot.cs
-=======
                     b.Property<string>("IdentityUserId")
                         .HasColumnType("nvarchar(450)");
 
->>>>>>> b6970488aa89ce8ae83c2b983c83d546620e7ffd:RealEstate/Data/Migrations/ApplicationDbContextModelSnapshot.cs
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
@@ -502,11 +488,8 @@ namespace RealEstate.Migrations
 
                     b.HasKey("RealtorId");
 
-<<<<<<< HEAD:RealEstate/Migrations/ApplicationDbContextModelSnapshot.cs
-=======
                     b.HasIndex("IdentityUserId");
 
->>>>>>> b6970488aa89ce8ae83c2b983c83d546620e7ffd:RealEstate/Data/Migrations/ApplicationDbContextModelSnapshot.cs
                     b.ToTable("Realtor");
                 });
 
@@ -571,13 +554,6 @@ namespace RealEstate.Migrations
 
                     b.HasOne("RealEstate.Models.Checklist", "Checklist")
                         .WithMany()
-<<<<<<< HEAD:RealEstate/Migrations/ApplicationDbContextModelSnapshot.cs
-                        .HasForeignKey("ChecklistId");
-
-                    b.HasOne("RealEstate.Models.ClosingRep", "ClosingRep")
-                        .WithMany()
-                        .HasForeignKey("ClosingRepId");
-=======
                         .HasForeignKey("ChecklistId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -587,7 +563,6 @@ namespace RealEstate.Migrations
                         .HasForeignKey("ClosingRepId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
->>>>>>> b6970488aa89ce8ae83c2b983c83d546620e7ffd:RealEstate/Data/Migrations/ApplicationDbContextModelSnapshot.cs
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
                         .WithMany()
@@ -595,13 +570,6 @@ namespace RealEstate.Migrations
 
                     b.HasOne("RealEstate.Models.LoanOfficer", "LoanOfficer")
                         .WithMany()
-<<<<<<< HEAD:RealEstate/Migrations/ApplicationDbContextModelSnapshot.cs
-                        .HasForeignKey("LoanOfficerId");
-
-                    b.HasOne("RealEstate.Models.Realtor", "Realtor")
-                        .WithMany()
-                        .HasForeignKey("RealtorId");
-=======
                         .HasForeignKey("LoanOfficerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -632,7 +600,6 @@ namespace RealEstate.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
                         .WithMany()
                         .HasForeignKey("IdentityUserId");
->>>>>>> b6970488aa89ce8ae83c2b983c83d546620e7ffd:RealEstate/Data/Migrations/ApplicationDbContextModelSnapshot.cs
                 });
 #pragma warning restore 612, 618
         }

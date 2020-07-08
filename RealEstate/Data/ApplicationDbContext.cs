@@ -10,6 +10,8 @@ namespace RealEstate.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+        public DbSet<RealEstate.Models.Client> Client { get; set;}
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

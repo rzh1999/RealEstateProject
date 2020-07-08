@@ -348,3 +348,11 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+### Custom additions to .gitignore:
+
+# Ignore all migrations in the /Migrations directory
+*RealEstate/RealEstate/Migrations
+
+# Ignore all migrations in the /Data/Migrations directory
+*RealEstate/RealEstate/Data/Migrations

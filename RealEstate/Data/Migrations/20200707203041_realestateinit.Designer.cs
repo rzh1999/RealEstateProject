@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RealEstate.Data;
 
 namespace RealEstate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200707203041_realestateinit")]
+    partial class realestateinit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,29 +50,29 @@ namespace RealEstate.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "323cf86e-aff1-4b6f-b9e6-1087f1f542af",
-                            ConcurrencyStamp = "fc914200-2ecb-40e2-abd5-c373db8b6376",
+                            Id = "6d189acb-7d58-4eba-973d-d917914d47b9",
+                            ConcurrencyStamp = "a26b1afc-3b4d-45c2-b93b-aaf82906dbae",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         },
                         new
                         {
-                            Id = "3a9e383e-374d-47e1-a09a-52ba4844b829",
-                            ConcurrencyStamp = "8c502b47-4d33-40b1-9530-6620872b59fd",
+                            Id = "19e71af0-8e3b-4813-bf50-c92757aeefaa",
+                            ConcurrencyStamp = "b7de08ae-800e-4651-96fa-130291a53d5b",
                             Name = "Realtor",
                             NormalizedName = "REALTOR"
                         },
                         new
                         {
-                            Id = "af96485f-55f5-46e1-9a6c-35ed8ac925b2",
-                            ConcurrencyStamp = "51cd0143-935f-460c-bc9a-1140c907a93c",
+                            Id = "bf34fb74-4e41-4032-83ec-b8a7e3aa6f64",
+                            ConcurrencyStamp = "83355185-1b0b-4579-9444-5faa453b4461",
                             Name = "LoanOfficer",
                             NormalizedName = "LOANOFFICER"
                         },
                         new
                         {
-                            Id = "e2558ac8-8176-4454-a3c8-0a6bd3bd36e4",
-                            ConcurrencyStamp = "33725da9-db4d-4209-9573-b8cf98775f67",
+                            Id = "6eabc57d-5ead-405c-9483-5d53260123f2",
+                            ConcurrencyStamp = "325c5997-7a6c-4bae-b598-729a7636eca4",
                             Name = "Closing",
                             NormalizedName = "CLOSING"
                         });
@@ -402,9 +404,6 @@ namespace RealEstate.Data.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IdentityUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
@@ -415,8 +414,6 @@ namespace RealEstate.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ClosingRepId");
-
-                    b.HasIndex("IdentityUserId");
 
                     b.ToTable("ClosingRep");
                 });
@@ -437,9 +434,6 @@ namespace RealEstate.Data.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IdentityUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
@@ -450,8 +444,6 @@ namespace RealEstate.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("LoanOfficerId");
-
-                    b.HasIndex("IdentityUserId");
 
                     b.ToTable("LoanOfficer");
                 });
@@ -472,9 +464,6 @@ namespace RealEstate.Data.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IdentityUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
@@ -485,8 +474,6 @@ namespace RealEstate.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RealtorId");
-
-                    b.HasIndex("IdentityUserId");
 
                     b.ToTable("Realtor");
                 });
@@ -577,27 +564,6 @@ namespace RealEstate.Data.Migrations
                         .HasForeignKey("RealtorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("RealEstate.Models.ClosingRep", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
-                        .WithMany()
-                        .HasForeignKey("IdentityUserId");
-                });
-
-            modelBuilder.Entity("RealEstate.Models.LoanOfficer", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
-                        .WithMany()
-                        .HasForeignKey("IdentityUserId");
-                });
-
-            modelBuilder.Entity("RealEstate.Models.Realtor", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
-                        .WithMany()
-                        .HasForeignKey("IdentityUserId");
                 });
 #pragma warning restore 612, 618
         }

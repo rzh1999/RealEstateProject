@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RealEstate.ActionFilters
 {
-    public class GlobalRouting
+    public class GlobalRouting : IActionFilter
     {
      
             private readonly ClaimsPrincipal _claimsPrincipal;

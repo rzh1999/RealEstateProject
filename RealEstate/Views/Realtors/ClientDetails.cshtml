@@ -1,0 +1,124 @@
+﻿@model RealEstate.Models.Client
+
+@{
+    ViewData["Title"] = "Client Details";
+}
+
+<h1>Client Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeOfClient)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TypeOfClient)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClosingDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClosingDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DepositAmount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DepositAmount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApprovedAmount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApprovedAmount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApprovalDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApprovalDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InspectionDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InspectionDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Realtor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Realtor.FirstName) @Html.DisplayFor(model => model.Realtor.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LoanOfficer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LoanOfficer.FirstName) @Html.DisplayFor(model => model.LoanOfficer.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClosingRep)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClosingRep.FirstName) @Html.DisplayFor(model => model.ClosingRep.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Checklist)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Checklist.ChecklistId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Address.StreetAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address.StreetAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Address.City)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address.City)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Address.State)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address.State)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Address.Zip)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address.Zip)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="EditChecklist" asp-route-id="@Model.ChecklistId">See Home Buying Checklist</a> |
+    <a asp-action="Index">Home</a>
+</div>

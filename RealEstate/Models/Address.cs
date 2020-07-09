@@ -26,9 +26,9 @@ namespace RealEstate.Models
         public int Zip { get; set; }
 
         [Display(Name = "Longitude:")]
-        public int Longitude { get; set; }
+        public double Longitude { get; set; }
 
         [Display(Name = "Latitude:")]
-        public int Latitude { get; set; }
+        public double Latitude { get; set; }
     }
 }

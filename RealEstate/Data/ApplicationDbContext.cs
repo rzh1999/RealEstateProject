@@ -59,5 +59,7 @@ namespace RealEstate.Data
         public DbSet<RealEstate.Models.LoanOfficer> LoanOfficer { get; set; }
 
         public DbSet<RealEstate.Models.ClosingRep> ClosingRep { get; set; }
+
+        public DbSet<RealEstate.Models.Address> Address { get; set; }
     } 
 }

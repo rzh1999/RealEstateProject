@@ -24,7 +24,7 @@ namespace RealEstate.Controllers
         public async Task<IActionResult> Index()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            Realtor realtor = _context.Realtor.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            Realtor realtor = await _context.Realtor.Where(c => c.IdentityUserId == userId).SingleOrDefaultAsync();
             if (realtor == null)
             {
                 return RedirectToAction("Create");
@@ -43,6 +43,29 @@ namespace RealEstate.Controllers
             }
             var applicationDbContext = _context.Client.Where(r => r.RealtorId == realtor.RealtorId);
             return View(await applicationDbContext.ToListAsync());
+        }
+
+        public async Task<IActionResult> ClientDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var client = await _context.Client
+                .Where(r => r.ClientId == id).Include(c => c.Realtor)
+                .FirstOrDefaultAsync();
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            //client.Realtor = await _context.Realtor.Where(r => r.RealtorId == client.RealtorId).FirstOrDefaultAsync();
+            //client.LoanOfficer = await _context.Realtor .Where(r => r.LoanOfficerId == client.LoanOfficerId).FirstOrDefaultAsync();
+            //client.ClosingRep = await _context.ClosingRep.Where(r => r.ClosingRepId == client.ClosingRepId).FirstOrDefaultAsync();
+            
+
+            return View(client);
         }
 
         // GET: Realtors/Details/5

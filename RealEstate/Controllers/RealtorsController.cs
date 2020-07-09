@@ -118,6 +118,48 @@ namespace RealEstate.Controllers
             return View(realtor);
         }
 
+
+        public async Task<IActionResult> EditChecklist(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var checklist = await _context.Checklist.FindAsync(id);
+            if (checklist == null)
+            {
+                return NotFound();
+            }
+            return View(checklist);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditChecklist(int id, Checklist checklist)
+        {
+            if (id != checklist.ChecklistId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(checklist);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                        throw;
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(checklist);
+        }
+
         // GET: Realtors/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

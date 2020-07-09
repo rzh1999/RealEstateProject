@@ -20,13 +20,6 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DOB)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DOB)
-        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.EmailAddress)
         </dt>
@@ -126,6 +119,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="EditChecklist" asp-route-id="@Model.ClientId">See Home Buying Checklist</a> |
+    <a asp-action="EditChecklist" asp-route-id="@Model.ChecklistId">See Home Buying Checklist</a> |
     <a asp-action="Index">Home</a>
 </div>

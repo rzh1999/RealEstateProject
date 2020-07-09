@@ -50,27 +50,16 @@ namespace RealEstate.Data
             );
         }
 
-<<<<<<< HEAD
-=======
-        public DbSet<RealEstate.Models.Realtor> Realtor { get; set; }
->>>>>>> 0bc2258919d0acf57aad3172b52fde5dca381e16
+
 
         public DbSet<RealEstate.Models.Realtor> Realtor { get; set; }
         public DbSet<RealEstate.Models.Client> Client { get; set; }
         public DbSet<RealEstate.Models.Checklist> Checklist { get; set; }
-<<<<<<< HEAD
+
         public DbSet<RealEstate.Models.LoanOfficer> LoanOfficer { get; set; }
         public DbSet<RealEstate.Models.ClosingRep> ClosingRep { get; set; }
         public DbSet<RealEstate.Models.Address> Address { get; set; }
 
     }
-=======
-        
-        public DbSet<RealEstate.Models.LoanOfficer> LoanOfficer { get; set; }
 
-        public DbSet<RealEstate.Models.ClosingRep> ClosingRep { get; set; }
-
-        public DbSet<RealEstate.Models.Address> Address { get; set; }
-    } 
->>>>>>> 0bc2258919d0acf57aad3172b52fde5dca381e16
 }

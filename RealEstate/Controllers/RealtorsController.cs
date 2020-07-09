@@ -30,6 +30,18 @@ namespace RealEstate.Controllers
                 return RedirectToAction("Create");
             }
             var applicationDbContext = _context.Realtor.Include(r => r.IdentityUser);
+            return RedirectToAction("ClientList");
+        }
+
+        public async Task<IActionResult> ClientList()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Realtor realtor = _context.Realtor.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            if (realtor == null)
+            {
+                return RedirectToAction("Create");
+            }
+            var applicationDbContext = _context.Client.Where(r => r.RealtorId == realtor.RealtorId);
             return View(await applicationDbContext.ToListAsync());
         }
 

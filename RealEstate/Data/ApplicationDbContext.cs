@@ -42,5 +42,7 @@ namespace RealEstate.Data
         }
 
         public DbSet<RealEstate.Models.Realtor> Realtor { get; set; }
+
+        public DbSet<RealEstate.Models.Client> Client { get; set; }
     }
 }

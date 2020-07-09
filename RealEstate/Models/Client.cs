@@ -67,27 +67,27 @@ namespace RealEstate.Models
 
         [Display(Name = "Realtor:")]
         [ForeignKey("Realtor")]
-        public int RealtorId { get; set; }
+        public int? RealtorId { get; set; }
         public Realtor Realtor { get; set; }
 
         [Display(Name = "Loan Officer:")]
         [ForeignKey("LoanOfficer")]
-        public int LoanOfficerId { get; set; }
+        public int? LoanOfficerId { get; set; }
         public LoanOfficer LoanOfficer { get; set; }
 
         [Display(Name = "Closing Rep:")]
         [ForeignKey("ClosingRep")]
-        public int ClosingRepId { get; set; }
+        public int? ClosingRepId { get; set; }
         public ClosingRep ClosingRep { get; set; }
 
         
         [ForeignKey("Checklist")]
-        public int ChecklistId { get; set; }
+        public int? ChecklistId { get; set; }
         public Checklist Checklist { get; set; }
 
         [ForeignKey("Address")]
 
-        public int AddressId { get; set; }
+        public int? AddressId { get; set; }
         public Address Address { get; set; }
 
     }

@@ -32,6 +32,11 @@ namespace RealEstate.Models
 
         [Display(Name = "Telephone Number")]
         public string PhoneNumber { get; set; }
+<<<<<<< HEAD
+=======
+
+        [Display(Name = "Login Id:")]
+>>>>>>> ed7f7a51ac343d0fbd08aef5f7ceaf68fc7896aa
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }
         public IdentityUser IdentityUser { get; set; }

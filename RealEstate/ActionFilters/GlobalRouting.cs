@@ -23,7 +23,7 @@ namespace RealEstate.ActionFilters
                 {
                     if (_claimsPrincipal.IsInRole("Client"))
                     {
-                        context.Result = new RedirectToActionResult("Index",
+                        context.Result = new RedirectToActionResult("CreateClient",
                         "Clients", null);
                     }
                     else if (_claimsPrincipal.IsInRole("Realtor"))

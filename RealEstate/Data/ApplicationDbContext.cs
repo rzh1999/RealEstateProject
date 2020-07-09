@@ -10,10 +10,14 @@ namespace RealEstate.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+        
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
+
+       
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -37,14 +41,25 @@ namespace RealEstate.Data
                                               {
                                                   Name = "Closing",
                                                   NormalizedName = "CLOSING"
+                                              },
+                                              new IdentityRole
+                                              {
+                                                  Name = "Admin",
+                                                  NormalizedName = "ADMIN"
                                               }
             );
         }
 
+<<<<<<< HEAD
         public DbSet<RealEstate.Models.Realtor> Realtor { get; set; }
 
         public DbSet<RealEstate.Models.Client> Client { get; set; }
 
         public DbSet<RealEstate.Models.Checklist> Checklist { get; set; }
+=======
+        public DbSet<RealEstate.Models.Client> Client { get; set; }
+
+        public DbSet<RealEstate.Models.Address> Address { get; set; }
+>>>>>>> ed7f7a51ac343d0fbd08aef5f7ceaf68fc7896aa
     }
 }

@@ -155,9 +155,9 @@ namespace RealEstate.Controllers
                 {
                         throw;
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("ClientDetails", new { id = _context.Client.Where(c => c.ChecklistId == id).FirstOrDefault().ClientId});
             }
-            return View(checklist);
+            return View(id);
         }
 
         // GET: Realtors/Edit/5

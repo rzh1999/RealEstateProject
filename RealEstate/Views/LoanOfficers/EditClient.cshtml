@@ -25,7 +25,7 @@
                 @Html.DisplayFor(model => model.LastName)
             </dd>
         </dl>
-<<<<<<< HEAD
+
         <form asp-action="EditClient">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -50,14 +50,6 @@
                 <label asp-for="InspectionDate" class="control-label"></label>
                 <input asp-for="InspectionDate" class="form-control" />
                 <span asp-validation-for="InspectionDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for=@Model.Checklist.IsClearToClose class="control-label"></label>
-                <input asp-for="@Model.Checklist.IsClearToClose" class="form-control" />
-                <span asp-validation-for="@Model.Checklist.IsClearToClose" class="text-danger"></span>
-            </div>
-
-=======
         </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -69,7 +61,6 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -356,3 +356,5 @@ MigrationBackup/
 
 # Ignore all migrations in the /Data/Migrations directory
 *RealEstate/RealEstate/Data/Migrations
+
+ApiKeys.cs

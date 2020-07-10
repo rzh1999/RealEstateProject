@@ -50,6 +50,11 @@ namespace RealEstate.Data
             );
         }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> b357631c24258720ffe938b668809440204e2822
         public DbSet<RealEstate.Models.Realtor> Realtor { get; set; }
         public DbSet<RealEstate.Models.Client> Client { get; set; }
         public DbSet<RealEstate.Models.Checklist> Checklist { get; set; }

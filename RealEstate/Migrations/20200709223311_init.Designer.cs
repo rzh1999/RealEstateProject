@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RealEstate.Data;
 
 namespace RealEstate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200709223311_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,61 +50,36 @@ namespace RealEstate.Migrations
                     b.HasData(
                         new
                         {
-<<<<<<< HEAD
-                            Id = "8e3ea6ae-b037-4120-aa09-ed6985acb43d",
-                            ConcurrencyStamp = "80566331-f366-4f29-a31d-2e780953cbd7",
-=======
                             Id = "30f303e5-d1f2-4176-86a5-dbfac472e588",
                             ConcurrencyStamp = "1cd7ea1b-5f65-4ebf-aa9b-79682c3932dd",
->>>>>>> b357631c24258720ffe938b668809440204e2822
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         },
                         new
                         {
-<<<<<<< HEAD
-                            Id = "2d696b8b-fa03-4824-8c22-409626a45181",
-                            ConcurrencyStamp = "d4c60510-2c5c-4201-a82b-72dfc02ef1ca",
-=======
                             Id = "d98fb450-ea37-4892-a096-698097881eda",
                             ConcurrencyStamp = "1b4ffeac-21a8-42b5-93d8-5f4eefee3307",
->>>>>>> b357631c24258720ffe938b668809440204e2822
                             Name = "Realtor",
                             NormalizedName = "REALTOR"
                         },
                         new
                         {
-<<<<<<< HEAD
-                            Id = "b222776b-6de7-4e60-a64d-b6f03f4283fb",
-                            ConcurrencyStamp = "54723c5e-4248-4795-ac94-45b1db009a41",
-=======
                             Id = "f4f4896d-f644-42cb-8a7b-e125a3fee294",
                             ConcurrencyStamp = "ecf16ca1-e32e-4ce7-b7ad-0b744f407bf2",
->>>>>>> b357631c24258720ffe938b668809440204e2822
                             Name = "LoanOfficer",
                             NormalizedName = "LOANOFFICER"
                         },
                         new
                         {
-<<<<<<< HEAD
-                            Id = "f2bb3cb0-17d3-4e14-8b20-338ba1299f9c",
-                            ConcurrencyStamp = "be0e367d-7c93-48d1-862b-757b2ce9a506",
-=======
                             Id = "e12b186b-94f4-40c8-a3bb-dfc319f980ce",
                             ConcurrencyStamp = "4cc295d0-4be2-42c3-b3bf-f2fb2ac99911",
->>>>>>> b357631c24258720ffe938b668809440204e2822
                             Name = "Closing",
                             NormalizedName = "CLOSING"
                         },
                         new
                         {
-<<<<<<< HEAD
-                            Id = "bc6d28bc-0a9c-4c6e-9d99-e95a99a70090",
-                            ConcurrencyStamp = "b81a26d6-45b3-4d7d-9d7e-abefeb79ea23",
-=======
                             Id = "9f0729ff-e0fa-407d-a84b-d12f1d954eb1",
                             ConcurrencyStamp = "a047942e-fea7-4efc-8f5d-ab903bc0c370",
->>>>>>> b357631c24258720ffe938b668809440204e2822
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

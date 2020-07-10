@@ -13,16 +13,16 @@
     <div class="col-md-4">
         <dl class="row">
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.FirstName)
+                @Html.DisplayNameFor(model => model.Client.FirstName)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.FirstName)
+                @Html.DisplayFor(model => model.Client.FirstName)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.LastName)
+                @Html.DisplayNameFor(model => model.Client.LastName)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.LastName)
+                @Html.DisplayFor(model => model.Client.LastName)
             </dd>
         </dl>
         </div>
@@ -31,31 +31,31 @@
             <div class="col-md-4">
                 <form asp-action="EditClient">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" asp-for="ClientId" />
+                    <input type="hidden" asp-for="Client.ClientId" />
 
                     <div class="form-group">
-                        <label asp-for="DepositAmount" class="control-label"></label>
-                        <input asp-for="DepositAmount" class="form-control" />
-                        <span asp-validation-for="DepositAmount" class="text-danger"></span>
+                        <label asp-for="Client.DepositAmount" class="control-label"></label>
+                        <input asp-for="Client.DepositAmount" class="form-control" />
+                        <span asp-validation-for="Client.DepositAmount" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="ApprovedAmount" class="control-label"></label>
-                        <input asp-for="ApprovedAmount" class="form-control" />
-                        <span asp-validation-for="ApprovedAmount" class="text-danger"></span>
+                        <label asp-for="Client.ApprovedAmount" class="control-label"></label>
+                        <input asp-for="Client.ApprovedAmount" class="form-control" />
+                        <span asp-validation-for="Client.ApprovedAmount" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="ApprovalDate" class="control-label"></label>
-                        <input asp-for="ApprovalDate" class="form-control" />
-                        <span asp-validation-for="ApprovalDate" class="text-danger"></span>
+                        <label asp-for="Client.ApprovalDate" class="control-label"></label>
+                        <input asp-for="Client.ApprovalDate" class="form-control" />
+                        <span asp-validation-for="Client.ApprovalDate" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="InspectionDate" class="control-label"></label>
-                        <input asp-for="InspectionDate" class="form-control" />
-                        <span asp-validation-for="InspectionDate" class="text-danger"></span>
+                        <label asp-for="Client.InspectionDate" class="control-label"></label>
+                        <input asp-for="Client.InspectionDate" class="form-control" />
+                        <span asp-validation-for="Client.InspectionDate" class="text-danger"></span>
                     </div>
                     <div class="form-group form-check">
                         <label class="form-check-label">
-                            <input class="form-check-input" asp-for="IsClearToClose" /> @Html.DisplayNameFor(model => model.IsClearToClose)
+                            <input class="form-check-input" asp-for="Checklist.IsClearToClose" /> @Html.DisplayNameFor(model => model.Checklist.IsClearToClose)
                         </label>
                     </div>
 

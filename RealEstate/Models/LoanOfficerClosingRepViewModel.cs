@@ -7,5 +7,8 @@ namespace RealEstate.Models
 {
     public class LoanOfficerClosingRepViewModel
     {
+        public IEnumerable<LoanOfficer> LoanOfficers { get; set; }
+
+        public IEnumerable<ClosingRep> ClosingReps { get; set; }
     }
 }

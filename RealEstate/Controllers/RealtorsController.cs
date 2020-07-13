@@ -87,10 +87,25 @@ namespace RealEstate.Controllers
             return View(realtor);
         }
 
+        public IActionResult GetAllRepresentatives()
+        {
+            var loanOfficer = _context.LoanOfficer.ToList();
+            var closingRep = _context.ClosingRep.ToList();
+
+            var view = new LoanOfficerClosingRepViewModel()
+            {
+                LoanOfficers = _context.LoanOfficer.ToList(),
+                ClosingReps = _context.ClosingRep.ToList(),
+            };
+
+            return View(view);
+
+        }
+
+
         // GET: Realtors/Create
         public IActionResult Create()
         {
-            ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 

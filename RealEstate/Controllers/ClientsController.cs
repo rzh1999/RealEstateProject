@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RealEstate.Data;
 using RealEstate.Models;
+using RestSharp;
 
 namespace RealEstate.Controllers
 {
@@ -88,6 +89,22 @@ namespace RealEstate.Controllers
                 clientmodel.Address.Longitude = longitude;
 
             }
+
+            var client = new RestClient($"https://realtor.p.rapidapi.com/locations/auto-complete?input={clientmodel.Address.StreetAddress}+{clientmodel.Address.City}+{clientmodel.Address.State}");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("x-rapidapi-host", "realtor.p.rapidapi.com");
+            request.AddHeader("x-rapidapi-key", ApiKeys.realtorApi);
+            IRestResponse restResponse = client.Execute(request);
+            var jsonRestResult = restResponse.Content;
+
+            if (restResponse.IsSuccessful)
+            {
+                JObject jObject = JObject.Parse(jsonRestResult);
+                var results = jObject["autocomplete"][0]["mpr_id"];
+                address.PropertyId = (Int64)results;
+            }
+
+
             try
            {
                 var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);

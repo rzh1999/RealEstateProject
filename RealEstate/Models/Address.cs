@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -30,5 +31,11 @@ namespace RealEstate.Models
 
         [Display(Name = "Latitude:")]
         public double Latitude { get; set; }
+
+        public Int64 PropertyId { get; set; }
+
+        [ForeignKey("PropertyInfo")]
+        public int PropertyInfoId { get; set; }
+        public PropertyInfo PropertyInfo { get; set; }
     }
 }

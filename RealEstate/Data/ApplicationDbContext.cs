@@ -10,21 +10,23 @@ namespace RealEstate.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
-        
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
 
-       
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
             builder.Entity<IdentityRole>().HasData(new IdentityRole
-                                            {Name = "Client",
-                                            NormalizedName = "CLIENT"},
+            {
+                Name = "Client",
+                NormalizedName = "CLIENT"
+            },
 
                                             new IdentityRole
                                             {
@@ -50,10 +52,7 @@ namespace RealEstate.Data
             );
         }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> a07217e9de92f1d71b2c6f25aef60c8c834e2f68
         public DbSet<RealEstate.Models.Realtor> Realtor { get; set; }
         public DbSet<RealEstate.Models.Client> Client { get; set; }
         public DbSet<RealEstate.Models.Checklist> Checklist { get; set; }

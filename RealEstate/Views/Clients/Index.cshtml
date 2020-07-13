@@ -195,7 +195,8 @@
     <h3>Your Home's Map</h3>
     <!--The div element for the map -->
     <div id="map"></div>
-    <script>
+    <script async defer>
+        
 // Initialize and add the map
 function initMap() {
   // The location of Uluru
@@ -217,7 +218,7 @@ function initMap() {
     * The callback parameter executes the initMap() function
     -->
     @{
-        var myScriptSrc = "https://maps.googleapis.com/maps/api/js?key=" + ApiKeys.googleApi + "&callback=initMap async defer";
+        var myScriptSrc = "https://maps.googleapis.com/maps/api/js?key=" + ApiKeys.googleApi + "&callback=initMap ";
 
     }
     <script src="@myScriptSrc"></script>

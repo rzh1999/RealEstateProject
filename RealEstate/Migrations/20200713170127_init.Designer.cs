@@ -10,8 +10,8 @@ using RealEstate.Data;
 namespace RealEstate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200713132831_agentname")]
-    partial class agentname
+    [Migration("20200713170127_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,36 +50,36 @@ namespace RealEstate.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ea4bfb57-ac4d-48d7-ba9a-8efcaf984566",
-                            ConcurrencyStamp = "1c0ddbfa-35b5-41f5-b1fd-33e5ea0a5a30",
+                            Id = "84940990-4b8a-4f6b-b4e9-c6f4ed9f2753",
+                            ConcurrencyStamp = "e4d2927a-24c5-4147-8a2a-dcab6e7cdf92",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         },
                         new
                         {
-                            Id = "b72ae1a0-a977-406c-a862-727a84f5fd42",
-                            ConcurrencyStamp = "b7c98f50-6af2-4e62-8b55-3e270d4da78b",
+                            Id = "ceec2ddc-40f8-4783-8de9-219c13377c0a",
+                            ConcurrencyStamp = "b1efbea9-8e06-4deb-86bf-447205b41443",
                             Name = "Realtor",
                             NormalizedName = "REALTOR"
                         },
                         new
                         {
-                            Id = "d4a2bfb0-dd8c-430f-8e7d-d374fa55b920",
-                            ConcurrencyStamp = "9ffe5ea0-2edd-462d-a047-0bdfd0ab8f0b",
+                            Id = "ff776ad4-94f0-442a-818e-5a69044ad1f7",
+                            ConcurrencyStamp = "dc674558-da2d-4aee-9144-86165ca4587e",
                             Name = "LoanOfficer",
                             NormalizedName = "LOANOFFICER"
                         },
                         new
                         {
-                            Id = "bbf602ff-e0b8-433e-8b7b-4d5efbd8a823",
-                            ConcurrencyStamp = "a2403767-f3c5-473a-b2ce-91eaa0f9713c",
+                            Id = "74869eb1-589c-4662-8c17-0b5a18b73daf",
+                            ConcurrencyStamp = "9c67cf15-9b5b-4836-9945-02d0f189a856",
                             Name = "Closing",
                             NormalizedName = "CLOSING"
                         },
                         new
                         {
-                            Id = "4e6492ef-93cd-4f5f-9d7e-f770d19a74d8",
-                            ConcurrencyStamp = "e95c1adc-ca2c-4b16-a132-ad738c7ce560",
+                            Id = "ec6467b0-062b-4b71-b425-89ee1ac5be6b",
+                            ConcurrencyStamp = "0b914fa0-99e7-4e76-991e-ed5de8353efd",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

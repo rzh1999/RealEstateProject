@@ -10,8 +10,8 @@ using RealEstate.Data;
 namespace RealEstate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200709223311_init")]
-    partial class init
+    [Migration("20200713132831_agentname")]
+    partial class agentname
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,36 +50,36 @@ namespace RealEstate.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "30f303e5-d1f2-4176-86a5-dbfac472e588",
-                            ConcurrencyStamp = "1cd7ea1b-5f65-4ebf-aa9b-79682c3932dd",
+                            Id = "ea4bfb57-ac4d-48d7-ba9a-8efcaf984566",
+                            ConcurrencyStamp = "1c0ddbfa-35b5-41f5-b1fd-33e5ea0a5a30",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         },
                         new
                         {
-                            Id = "d98fb450-ea37-4892-a096-698097881eda",
-                            ConcurrencyStamp = "1b4ffeac-21a8-42b5-93d8-5f4eefee3307",
+                            Id = "b72ae1a0-a977-406c-a862-727a84f5fd42",
+                            ConcurrencyStamp = "b7c98f50-6af2-4e62-8b55-3e270d4da78b",
                             Name = "Realtor",
                             NormalizedName = "REALTOR"
                         },
                         new
                         {
-                            Id = "f4f4896d-f644-42cb-8a7b-e125a3fee294",
-                            ConcurrencyStamp = "ecf16ca1-e32e-4ce7-b7ad-0b744f407bf2",
+                            Id = "d4a2bfb0-dd8c-430f-8e7d-d374fa55b920",
+                            ConcurrencyStamp = "9ffe5ea0-2edd-462d-a047-0bdfd0ab8f0b",
                             Name = "LoanOfficer",
                             NormalizedName = "LOANOFFICER"
                         },
                         new
                         {
-                            Id = "e12b186b-94f4-40c8-a3bb-dfc319f980ce",
-                            ConcurrencyStamp = "4cc295d0-4be2-42c3-b3bf-f2fb2ac99911",
+                            Id = "bbf602ff-e0b8-433e-8b7b-4d5efbd8a823",
+                            ConcurrencyStamp = "a2403767-f3c5-473a-b2ce-91eaa0f9713c",
                             Name = "Closing",
                             NormalizedName = "CLOSING"
                         },
                         new
                         {
-                            Id = "9f0729ff-e0fa-407d-a84b-d12f1d954eb1",
-                            ConcurrencyStamp = "a047942e-fea7-4efc-8f5d-ab903bc0c370",
+                            Id = "4e6492ef-93cd-4f5f-9d7e-f770d19a74d8",
+                            ConcurrencyStamp = "e95c1adc-ca2c-4b16-a132-ad738c7ce560",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -471,6 +471,9 @@ namespace RealEstate.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AgentName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CompanyName")
                         .HasColumnType("nvarchar(max)");

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RealEstate.Migrations
 {
-    public partial class init : Migration
+    public partial class agentname : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -246,6 +246,7 @@ namespace RealEstate.Migrations
                     RealtorId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LicenseNumber = table.Column<int>(nullable: false),
+                    AgentName = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     CompanyName = table.Column<string>(nullable: true),
@@ -335,11 +336,11 @@ namespace RealEstate.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "30f303e5-d1f2-4176-86a5-dbfac472e588", "1cd7ea1b-5f65-4ebf-aa9b-79682c3932dd", "Client", "CLIENT" },
-                    { "d98fb450-ea37-4892-a096-698097881eda", "1b4ffeac-21a8-42b5-93d8-5f4eefee3307", "Realtor", "REALTOR" },
-                    { "f4f4896d-f644-42cb-8a7b-e125a3fee294", "ecf16ca1-e32e-4ce7-b7ad-0b744f407bf2", "LoanOfficer", "LOANOFFICER" },
-                    { "e12b186b-94f4-40c8-a3bb-dfc319f980ce", "4cc295d0-4be2-42c3-b3bf-f2fb2ac99911", "Closing", "CLOSING" },
-                    { "9f0729ff-e0fa-407d-a84b-d12f1d954eb1", "a047942e-fea7-4efc-8f5d-ab903bc0c370", "Admin", "ADMIN" }
+                    { "ea4bfb57-ac4d-48d7-ba9a-8efcaf984566", "1c0ddbfa-35b5-41f5-b1fd-33e5ea0a5a30", "Client", "CLIENT" },
+                    { "b72ae1a0-a977-406c-a862-727a84f5fd42", "b7c98f50-6af2-4e62-8b55-3e270d4da78b", "Realtor", "REALTOR" },
+                    { "d4a2bfb0-dd8c-430f-8e7d-d374fa55b920", "9ffe5ea0-2edd-462d-a047-0bdfd0ab8f0b", "LoanOfficer", "LOANOFFICER" },
+                    { "bbf602ff-e0b8-433e-8b7b-4d5efbd8a823", "a2403767-f3c5-473a-b2ce-91eaa0f9713c", "Closing", "CLOSING" },
+                    { "4e6492ef-93cd-4f5f-9d7e-f770d19a74d8", "e95c1adc-ca2c-4b16-a132-ad738c7ce560", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -48,61 +48,36 @@ namespace RealEstate.Migrations
                     b.HasData(
                         new
                         {
-<<<<<<< HEAD
-                            Id = "8e3ea6ae-b037-4120-aa09-ed6985acb43d",
-                            ConcurrencyStamp = "80566331-f366-4f29-a31d-2e780953cbd7",
-=======
-                            Id = "30f303e5-d1f2-4176-86a5-dbfac472e588",
-                            ConcurrencyStamp = "1cd7ea1b-5f65-4ebf-aa9b-79682c3932dd",
->>>>>>> b357631c24258720ffe938b668809440204e2822
+                            Id = "ea4bfb57-ac4d-48d7-ba9a-8efcaf984566",
+                            ConcurrencyStamp = "1c0ddbfa-35b5-41f5-b1fd-33e5ea0a5a30",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         },
                         new
                         {
-<<<<<<< HEAD
-                            Id = "2d696b8b-fa03-4824-8c22-409626a45181",
-                            ConcurrencyStamp = "d4c60510-2c5c-4201-a82b-72dfc02ef1ca",
-=======
-                            Id = "d98fb450-ea37-4892-a096-698097881eda",
-                            ConcurrencyStamp = "1b4ffeac-21a8-42b5-93d8-5f4eefee3307",
->>>>>>> b357631c24258720ffe938b668809440204e2822
+                            Id = "b72ae1a0-a977-406c-a862-727a84f5fd42",
+                            ConcurrencyStamp = "b7c98f50-6af2-4e62-8b55-3e270d4da78b",
                             Name = "Realtor",
                             NormalizedName = "REALTOR"
                         },
                         new
                         {
-<<<<<<< HEAD
-                            Id = "b222776b-6de7-4e60-a64d-b6f03f4283fb",
-                            ConcurrencyStamp = "54723c5e-4248-4795-ac94-45b1db009a41",
-=======
-                            Id = "f4f4896d-f644-42cb-8a7b-e125a3fee294",
-                            ConcurrencyStamp = "ecf16ca1-e32e-4ce7-b7ad-0b744f407bf2",
->>>>>>> b357631c24258720ffe938b668809440204e2822
+                            Id = "d4a2bfb0-dd8c-430f-8e7d-d374fa55b920",
+                            ConcurrencyStamp = "9ffe5ea0-2edd-462d-a047-0bdfd0ab8f0b",
                             Name = "LoanOfficer",
                             NormalizedName = "LOANOFFICER"
                         },
                         new
                         {
-<<<<<<< HEAD
-                            Id = "f2bb3cb0-17d3-4e14-8b20-338ba1299f9c",
-                            ConcurrencyStamp = "be0e367d-7c93-48d1-862b-757b2ce9a506",
-=======
-                            Id = "e12b186b-94f4-40c8-a3bb-dfc319f980ce",
-                            ConcurrencyStamp = "4cc295d0-4be2-42c3-b3bf-f2fb2ac99911",
->>>>>>> b357631c24258720ffe938b668809440204e2822
+                            Id = "bbf602ff-e0b8-433e-8b7b-4d5efbd8a823",
+                            ConcurrencyStamp = "a2403767-f3c5-473a-b2ce-91eaa0f9713c",
                             Name = "Closing",
                             NormalizedName = "CLOSING"
                         },
                         new
                         {
-<<<<<<< HEAD
-                            Id = "bc6d28bc-0a9c-4c6e-9d99-e95a99a70090",
-                            ConcurrencyStamp = "b81a26d6-45b3-4d7d-9d7e-abefeb79ea23",
-=======
-                            Id = "9f0729ff-e0fa-407d-a84b-d12f1d954eb1",
-                            ConcurrencyStamp = "a047942e-fea7-4efc-8f5d-ab903bc0c370",
->>>>>>> b357631c24258720ffe938b668809440204e2822
+                            Id = "4e6492ef-93cd-4f5f-9d7e-f770d19a74d8",
+                            ConcurrencyStamp = "e95c1adc-ca2c-4b16-a132-ad738c7ce560",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -494,6 +469,9 @@ namespace RealEstate.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AgentName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CompanyName")
                         .HasColumnType("nvarchar(max)");

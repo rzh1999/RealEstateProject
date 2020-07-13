@@ -89,14 +89,10 @@ namespace RealEstate.Controllers
             try
             {
                 var clientInDb = _context.Client.Where(s => s.ClientId == Id).Single();
-                var checkList = _context.Checklist.Where(c => c.ChecklistId == clientInDb.ChecklistId).Single();
-
-                clientInDb.DepositAmount = client.DepositAmount;
+                
                 clientInDb.ApprovedAmount = client.ApprovedAmount;
                 clientInDb.ApprovalDate = client.ApprovalDate;
-                //checkList.IsClearToClose = client.i
                 
-
                 _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
@@ -107,27 +103,47 @@ namespace RealEstate.Controllers
             }
         }
 
-        // GET: LoanOfficers/Delete/5
-        public ActionResult Delete(int id)
+        // GET: LoanOfficers/Edit/5
+        public ActionResult EditClientChecklist(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var checklist =  _context.Checklist.Find(id);
+            if (checklist == null)
+            {
+                return NotFound();
+            }
+            return View("EditClientChecklist", checklist);
         }
 
-        // POST: LoanOfficers/Delete/5
+        // POST: LoanOfficers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult EditClientChecklist(int Id, Checklist checklist)
         {
-            try
+            if (Id != checklist.ChecklistId)
             {
-                // TODO: Add delete logic here
+                return NotFound();
+            }
 
-                return RedirectToAction(nameof(Index));
+           
+                try
+                {
+                    _context.Update(checklist);
+                    _context.SaveChanges();
+                }
+                catch 
+                {
+                return View("EditClientChecklist");
             }
-            catch
-            {
-                return View();
-            }
+                
+           
+            return View("EditClientChecklist");
         }
+
+
     }
 }

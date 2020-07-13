@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -58,13 +59,15 @@ namespace RealEstate.Controllers
         public ActionResult CreateClient()
         {
             Client client = new Client();
+            ViewBag.AgentName = new SelectList(_context.Realtor, "RealtorId", "AgentName");
+
             return View(client);
         }
 
         // POST: Clients/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateClient(Client clientmodel, Address address)
+        public async Task<ActionResult> CreateClient(Client clientmodel, Address address, Checklist checklist, Realtor realtor)
         {
             string url = string.Format(
                "https://maps.googleapis.com/maps/api/geocode/json?address={0},+{1},+{2}&key={3}",
@@ -81,25 +84,44 @@ namespace RealEstate.Controllers
                 var results = jObject["results"];
                 var latitude = (double)results[0]["geometry"]["location"]["lat"];
                 var longitude = (double)results[0]["geometry"]["location"]["lng"];
-                address.Latitude = latitude;
-                address.Longitude = longitude;
+                clientmodel.Address.Latitude = latitude;
+                clientmodel.Address.Longitude = longitude;
 
             }
             try
-            {
+           {
                 var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 clientmodel.IdentityUserId = userId;
-                _context.Address.Add(address);
-                _context.SaveChanges();
+                //Checklist checklist = new Checklist();
+
+                checklist.DepositPaid = false;
+                checklist.IsApproved = false;
+                checklist.IsOfferMade = false;
+                checklist.IsInspected = false;
+                checklist.IsUnderContract = false;
+                checklist.IsClearToClose = false;
+                checklist.IsClosed = false;
+            _context.Checklist.Add(checklist);
+            _context.SaveChanges();
+            clientmodel.ChecklistId = checklist.ChecklistId;
+                 ViewBag.AgentName = new SelectList(_context.Realtor, "RealtorId", "AgentName");
+              
                 clientmodel.AddressId = address.AddressId;
+              
+            //save changes after adding checklist
+            //then add checklistid to client
+
                 _context.Client.Add(clientmodel);
+                
                 _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+           
+            return RedirectToAction(nameof(Index));
            }
            catch
            {
              return View();
            }
+           
         }
 
        
@@ -127,27 +149,7 @@ namespace RealEstate.Controllers
             }
         }
 
-        // GET: Clients/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
-        // POST: Clients/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+       
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace RealEstate.Models
 
         public string LastName { get; set; }
 
+       
         [Display(Name = "DOB:")]
         [DataType(DataType.Date)]
         [Column(TypeName = "date")]

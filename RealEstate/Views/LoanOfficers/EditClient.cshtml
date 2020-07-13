@@ -30,11 +30,7 @@
 
             <input type="hidden" asp-for="ClientId" />
 
-            <div class="form-group">
-                <label asp-for="DepositAmount" class="control-label"></label>
-                <input asp-for="DepositAmount" class="form-control" />
-                <span asp-validation-for="DepositAmount" class="text-danger"></span>
-            </div>
+           
             <div class="form-group">
                 <label asp-for="ApprovedAmount" class="control-label"></label>
                 <input asp-for="ApprovedAmount" class="form-control" />
@@ -45,16 +41,7 @@
                 <input asp-for="ApprovalDate" class="form-control" />
                 <span asp-validation-for="ApprovalDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="InspectionDate" class="control-label"></label>
-                <input asp-for="InspectionDate" class="form-control" />
-                <span asp-validation-for="InspectionDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for=@Model.Checklist.IsClearToClose class="control-label"></label>
-                <input asp-for="@Model.Checklist.IsClearToClose" class="form-control" />
-                <span asp-validation-for="@Model.Checklist.IsClearToClose" class="text-danger"></span>
-            </div>
+          
 
 
             <div class="form-group">

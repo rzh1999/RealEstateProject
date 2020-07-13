@@ -17,6 +17,9 @@ namespace RealEstate.Models
         [Display(Name = "License Number:")]
         public int LicenseNumber { get; set; }
 
+        [Display(Name = "Agent Name")]
+        public string AgentName { get; set; }
+
         [Display(Name = "First Name:")]
         public string FirstName { get; set; }
 

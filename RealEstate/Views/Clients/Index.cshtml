@@ -199,17 +199,17 @@
         
 // Initialize and add the map
 function initMap() {
-  // The location of Uluru
-     let lat = @lat;
-     let lng = @lng;
-  var uluru = {lat: -25.344, lng: 131.036};
+  // The location of the property
+    let lat; = @lat;
+    let lng; = @lng;
+  var propertyLocation = {lat: @lat, lng: @lng};
   // The map, centered at Uluru
-        uluru.lat = lat;
-        uluru.lng = lng;
+    propertyLocation.lat = lat;
+    propertyLocation.lng = lng;
   var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
+      document.getElementById('map'), {zoom: 17, center: propertyLocation});
+  // The marker, positioned at property location
+    var marker = new google.maps.Marker({ position: propertyLocation, map: map});
 }
     </script>
     <!--Load the API from the specified URL
@@ -218,7 +218,7 @@ function initMap() {
     * The callback parameter executes the initMap() function
     -->
     @{
-        var myScriptSrc = "https://maps.googleapis.com/maps/api/js?key=" + ApiKeys.googleApi + "&callback=initMap ";
+        var myScriptSrc = "https://maps.googleapis.com/maps/api/js?key=" + ApiKeys.googleApi + "&callback=initMap";
 
     }
     <script src="@myScriptSrc"></script>

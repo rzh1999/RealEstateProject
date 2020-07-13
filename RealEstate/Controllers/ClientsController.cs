@@ -42,6 +42,23 @@ namespace RealEstate.Controllers
                     return RedirectToAction("CreateClient");
                 }
 
+                var restClient = new RestClient($"https://realtor.p.rapidapi.com/properties/v2/detail?property_id=${client1.Address.PropertyId}");
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("x-rapidapi-host", "realtor.p.rapidapi.com");
+                request.AddHeader("x-rapidapi-key", ApiKeys.realtorApi);
+                IRestResponse restResponse = restClient.Execute(request);
+                var jsonRestResult = restResponse.Content;
+
+                if (restResponse.IsSuccessful)
+                {
+                    JObject jObject = JObject.Parse(jsonRestResult);
+                    client1.Address.PropertyInfo.Beds = (int)jObject["meta"]["tracking_params"]["listingBeds"];
+                    client1.Address.PropertyInfo.SquareFeet = (int)jObject["meta"]["tracking_params"]["listingSqFt"];
+                    client1.Address.PropertyInfo.Baths = (int)jObject["meta"]["tracking_params"]["listingBaths"];
+                    client1.Address.PropertyInfo.Price = (double)jObject["meta"]["tracking_params"]["listingPrice"];
+                }
+
+
                 return View(client1);
             }
             catch
@@ -101,7 +118,7 @@ namespace RealEstate.Controllers
             {
                 JObject jObject = JObject.Parse(jsonRestResult);
                 var results = jObject["autocomplete"][0]["mpr_id"];
-                address.PropertyId = (Int64)results;
+                clientmodel.Address.PropertyId = (Int64)results;
             }
 
 

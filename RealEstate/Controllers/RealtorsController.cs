@@ -87,10 +87,25 @@ namespace RealEstate.Controllers
             return View(realtor);
         }
 
+        public IActionResult GetAllRepresentatives()
+        {
+            var loanOfficer = _context.LoanOfficer.ToList();
+            var closingRep = _context.ClosingRep.ToList();
+
+            var view = new LoanOfficerClosingRepViewModel()
+            {
+                LoanOfficers = _context.LoanOfficer.ToList(),
+                ClosingReps = _context.ClosingRep.ToList(),
+            };
+
+            return View(view);
+
+        }
+
+
         // GET: Realtors/Create
         public IActionResult Create()
         {
-            ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
@@ -99,7 +114,7 @@ namespace RealEstate.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RealtorId,LicenseNumber,FirstName,LastName,CompanyName,EmailAddress,PhoneNumber,IdentityUserId")] Realtor realtor)
+        public async Task<IActionResult> Create([Bind("RealtorId,AgentName,LicenseNumber,FirstName,LastName,CompanyName,EmailAddress,PhoneNumber,IdentityUserId")] Realtor realtor)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             Realtor realtorAlreadyCreated = _context.Realtor.Where(c => c.IdentityUserId == userId).SingleOrDefault();

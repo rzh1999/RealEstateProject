@@ -56,11 +56,10 @@ namespace RealEstate.Data
         public DbSet<RealEstate.Models.Realtor> Realtor { get; set; }
         public DbSet<RealEstate.Models.Client> Client { get; set; }
         public DbSet<RealEstate.Models.Checklist> Checklist { get; set; }
-
         public DbSet<RealEstate.Models.LoanOfficer> LoanOfficer { get; set; }
         public DbSet<RealEstate.Models.ClosingRep> ClosingRep { get; set; }
         public DbSet<RealEstate.Models.Address> Address { get; set; }
-
+        public DbSet<RealEstate.Models.PropertyInfo> PropertyInfo { get; set; }
     }
 
 }

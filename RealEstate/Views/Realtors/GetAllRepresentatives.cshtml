@@ -1,0 +1,64 @@
+﻿@model RealEstate.Models.LoanOfficerClosingRepViewModel
+
+@{
+    ViewData["Title"] = "Representatives";
+}
+
+<h1>Representatives</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClosingReps.FirstOrDefault().FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClosingReps.FirstOrDefault().LastName)
+            </th>
+            <th>
+                Representative Role:
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ClosingReps)
+        {
+            <tr>
+                <td>
+                    @Model.ClosingReps.FirstOrDefault().FirstName
+                </td>
+                <td>
+                    @Model.ClosingReps.FirstOrDefault().LastName
+                </td>
+                <td>
+                    Closing Representative
+                </td>
+                <td>
+                    <a asp-action="EditChecklist" asp-route-id="@item.ClosingRepId">See Checklist</a> |
+                    <a asp-action="ClientDetails" asp-route-id="@item.ClosingRepId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ClosingRepId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tbody>
+        @foreach (var item in Model.LoanOfficers)
+        {
+            <tr>
+                <td>
+                    @Model.LoanOfficers.FirstOrDefault().FirstName
+                </td>
+                <td>
+                    @Model.LoanOfficers.FirstOrDefault().LastName
+                </td>
+                <td>
+                    Loan Officer
+                </td>
+                <td>
+                    <a asp-action="Details" asp-controller="LoanOfficer" asp-route-id="@item.LoanOfficerId">Details</a> |
+                    <a asp-action="Delete" asp-controller="LoanOfficer" asp-route-id="@item.LoanOfficerId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

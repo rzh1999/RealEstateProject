@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RealEstate.Migrations
 {
-    public partial class init : Migration
+    public partial class AddedPropertyInfoModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -336,11 +336,11 @@ namespace RealEstate.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "84940990-4b8a-4f6b-b4e9-c6f4ed9f2753", "e4d2927a-24c5-4147-8a2a-dcab6e7cdf92", "Client", "CLIENT" },
-                    { "ceec2ddc-40f8-4783-8de9-219c13377c0a", "b1efbea9-8e06-4deb-86bf-447205b41443", "Realtor", "REALTOR" },
-                    { "ff776ad4-94f0-442a-818e-5a69044ad1f7", "dc674558-da2d-4aee-9144-86165ca4587e", "LoanOfficer", "LOANOFFICER" },
-                    { "74869eb1-589c-4662-8c17-0b5a18b73daf", "9c67cf15-9b5b-4836-9945-02d0f189a856", "Closing", "CLOSING" },
-                    { "ec6467b0-062b-4b71-b425-89ee1ac5be6b", "0b914fa0-99e7-4e76-991e-ed5de8353efd", "Admin", "ADMIN" }
+                    { "3bb74a9e-f6a1-4aee-af48-0f67283abd9d", "58992c78-74f7-47aa-99d3-edaa6bebad63", "Client", "CLIENT" },
+                    { "7d64e59b-1397-4623-92bb-8611a4bdb9bd", "8dfa14e4-41cc-477e-8b28-74869113f19d", "Realtor", "REALTOR" },
+                    { "637b978a-7557-448e-a696-8083d4386cd6", "3264c883-6959-46ca-b75a-ae8755606410", "LoanOfficer", "LOANOFFICER" },
+                    { "a95f59e6-c6fe-4341-8b77-acc6b8e6862e", "84887e6b-0d92-431c-b628-384277207389", "Closing", "CLOSING" },
+                    { "4ea42632-3fc9-43c9-b5af-ad40df8a1208", "6552e259-4819-452b-b490-82f3a7d3fb90", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.CreateIndex(

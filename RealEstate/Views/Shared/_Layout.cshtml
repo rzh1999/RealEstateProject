@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -23,11 +26,17 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Chat With The Team</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Chat</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Upload" asp-action="UploadFile">Upload Document</a>
                         </li>
+                        @if (SignInManager.IsSignedIn(User) && User.IsInRole("LoanOfficer"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="LoanOfficers" asp-action="GetClientList">Client List</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -42,7 +51,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - RealEstate - <a asp-area="" asp-controller="Home" asp-action="Privacy">Chat With The Team</a> - 
+            &copy; 2020 - RealEstate - <a asp-area="" asp-controller="Home" asp-action="Privacy">Chat With The Team</a> -
             <a asp-area="" asp-controller="Upload" asp-action="UploadFile">Upload Document</a>
         </div>
     </footer>

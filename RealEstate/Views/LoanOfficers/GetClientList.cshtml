@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>GetClientList</h1>
+<h4>List of current Clients </h4>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -99,8 +99,9 @@
                 @Html.DisplayFor(modelItem => item.Checklist.IsClearToClose)
             </td>
             <td>
-                <a asp-action="EditClient" asp-route-id="@item.ClientId">Edit</a>
-                <a asp-action="EditClientChecklist" asp-route-id="@item.ChecklistId">Edit Checklist</a>
+                <a asp-action="EditClient" asp-route-id="@item.ClientId" ><button type="button" class="btn btn-primary">Edit Client</button></a>
+                
+                <a asp-action="EditClientChecklist" asp-route-id="@item.ChecklistId"><button type="button" class="btn btn-primary">Edit Checklist</button></a>
 
 
             </td>

@@ -99,7 +99,7 @@ namespace RealEstate.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RealtorId,LicenseNumber,FirstName,LastName,CompanyName,EmailAddress,PhoneNumber,IdentityUserId")] Realtor realtor)
+        public async Task<IActionResult> Create([Bind("RealtorId,AgentName,LicenseNumber,FirstName,LastName,CompanyName,EmailAddress,PhoneNumber,IdentityUserId")] Realtor realtor)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             Realtor realtorAlreadyCreated = _context.Realtor.Where(c => c.IdentityUserId == userId).SingleOrDefault();

@@ -40,7 +40,7 @@
                         @if (SignInManager.IsSignedIn(User) && User.IsInRole("Realtor"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="LoanOfficers" asp-action="GetClientList">Client List</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Realtor" asp-action="ClientList">Client List</a>
                             </li>
                         }
                     </ul>

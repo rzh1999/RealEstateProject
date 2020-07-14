@@ -23,7 +23,7 @@ namespace RealEstate.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Chat()
         {
             return View();
         }

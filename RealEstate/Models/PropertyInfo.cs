@@ -8,6 +8,7 @@ namespace RealEstate.Models
 {
         public class PropertyInfo
         {
+        [Key]
             public int PropertyInfoId { get; set; }
             [Display(Name = "Square Feet:")]
             public int SquareFeet { get; set; }

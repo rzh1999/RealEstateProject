@@ -41,7 +41,7 @@ namespace RealEstate.Controllers
             {
                 return RedirectToAction("Create");
             }
-            var applicationDbContext = _context.Client.Where(r => r.RealtorId == realtor.RealtorId);
+            var applicationDbContext = _context.Client;
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -89,8 +89,6 @@ namespace RealEstate.Controllers
 
         public IActionResult GetAllRepresentatives()
         {
-            var loanOfficer = _context.LoanOfficer.ToList();
-            var closingRep = _context.ClosingRep.ToList();
 
             var view = new LoanOfficerClosingRepViewModel()
             {

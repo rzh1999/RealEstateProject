@@ -35,7 +35,7 @@ namespace RealEstate.Models
         public Int64 PropertyId { get; set; }
 
         [ForeignKey("PropertyInfo")]
-        public int PropertyInfoId { get; set; }
+        public int? PropertyInfoId { get; set; }
         public PropertyInfo PropertyInfo { get; set; }
     }
 }

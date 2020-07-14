@@ -68,6 +68,7 @@
 
 
     </div>
+</div>
 
     <div class="collapse" id="collapsePropertyInfo">
         <div class="card card-body">
@@ -98,6 +99,30 @@
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.Address.Zip)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Address.PropertyInfo.SquareFeet)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Address.PropertyInfo.SquareFeet)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Address.PropertyInfo.Beds)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Address.PropertyInfo.Beds)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Address.PropertyInfo.Baths)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Address.PropertyInfo.Baths)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Address.PropertyInfo.Price)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Address.PropertyInfo.Price)
                 </dd>
             </dl>
         </div>
@@ -196,10 +221,10 @@
                     @Html.DisplayFor(model => model.Checklist.IsClosed)
                 </dd>
             </dl>
-            </dl>
+            
         </div>
     </div>
-</div>
+
 
 
 
@@ -229,10 +254,10 @@
 // Initialize and add the map
 function initMap() {
   // The location of the property
-    let lat; = @lat;
-    let lng; = @lng;
+    let lat = @lat;
+    let lng = @lng;
   var propertyLocation = {lat: @lat, lng: @lng};
-  // The map, centered at Uluru
+  // The map, centered at location
     propertyLocation.lat = lat;
     propertyLocation.lng = lng;
   var map = new google.maps.Map(
@@ -240,7 +265,6 @@ function initMap() {
   // The marker, positioned at property location
     var marker = new google.maps.Marker({ position: propertyLocation, map: map});
 }
-<<<<<<< HEAD
     </script>
     <!--Load the API from the specified URL
     * The async attribute allows the browser to render the page while the API loads
@@ -254,19 +278,4 @@ function initMap() {
     <script src="@myScriptSrc"></script>
 </body>
 </html>
-=======
-            </script>
-            <!--Load the API from the specified URL
-            * The async attribute allows the browser to render the page while the API loads
-            * The key parameter will contain your own API key (which is not needed for this tutorial)
-            * The callback parameter executes the initMap() function
-            -->
-            @{
-                var myScriptSrc = "https://maps.googleapis.com/maps/api/js?key=" + ApiKeys.googleApi + "&callback=initMap ";
-
-            }
-            <script src="@myScriptSrc"></script>
-        </body>
-    </html>
->>>>>>> e971b56bd6116aa6fc83c7d65cd6530256e5f16b
 

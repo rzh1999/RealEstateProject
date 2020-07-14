@@ -43,7 +43,7 @@
                 @Html.DisplayFor(modelItem => item.TypeOfClient)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Realtor.FirstName) @Html.DisplayFor(modelItem => item.Realtor.LastName)
+                @Html.DisplayFor(modelItem => item.Realtor.AgentName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LoanOfficer.FirstName) @Html.DisplayFor(modelItem => item.LoanOfficer.LastName)
@@ -54,7 +54,7 @@
             <td>
                 <a asp-action="EditChecklist" asp-route-id="@item.ChecklistId">See Checklist</a> |
                 <a asp-action="ClientDetails" asp-route-id="@item.ClientId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ClientId">Delete</a>
+                <a asp-action="AddClientRepresentatives" asp-route-id="@item.ClientId">Add Representative</a>
             </td>
         </tr>
 }

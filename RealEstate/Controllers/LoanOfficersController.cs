@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RealEstate.Data;
 using RealEstate.Models;
 
@@ -43,7 +44,7 @@ namespace RealEstate.Controllers
         public ActionResult GetClientList()
         {
             ClientListModel clientListModel = new ClientListModel();
-            var clients = _context.Client.ToList();
+            var clients = _context.Client.AsQueryable().Include(c => c.Checklist);
             return View(clients);
         }
 
@@ -92,10 +93,11 @@ namespace RealEstate.Controllers
                 
                 clientInDb.ApprovedAmount = client.ApprovedAmount;
                 clientInDb.ApprovalDate = client.ApprovalDate;
+                clientInDb.InspectionDate = client.InspectionDate;
                 
                 _context.SaveChanges();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("GetClientList");
             }
             catch
             {
@@ -137,11 +139,11 @@ namespace RealEstate.Controllers
                 }
                 catch 
                 {
-                return View("EditClientChecklist");
+                return RedirectToAction("GetClientList");
             }
-                
-           
-            return View("EditClientChecklist");
+
+
+            return RedirectToAction("GetClientList");
         }
 
 

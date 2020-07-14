@@ -35,30 +35,14 @@ namespace RealEstate.Controllers
                 
                 var client1 = _context.Client.Where(c => c.IdentityUserId == userId)
                     .Include(c => c.Address)
-                    .Include(C => C.IdentityUser)
+                    .Include(c => c.IdentityUser)
+                    .Include(c => c.Checklist)
                     .Include(c => c.Address.PropertyInfo)
                     .FirstOrDefault();
                 if (client1 == null)
                 {
                     return RedirectToAction("CreateClient");
                 }
-
-                //var restClient = new RestClient($"https://realtor.p.rapidapi.com/properties/v2/detail?property_id={client1.Address.PropertyId}");
-                //var request = new RestRequest(Method.GET);
-                //request.AddHeader("x-rapidapi-host", "realtor.p.rapidapi.com");
-                //request.AddHeader("x-rapidapi-key", ApiKeys.realtorApi);
-                //IRestResponse restResponse = restClient.Execute(request);
-                //var jsonRestResult = restResponse.Content;
-
-                //if (restResponse.IsSuccessful)
-                //{
-                //    JObject jObject = JObject.Parse(jsonRestResult);
-                //    client1.Address.PropertyInfo.Beds = (int)jObject["meta"]["tracking_params"]["listingBeds"];
-                //    client1.Address.PropertyInfo.SquareFeet = (int)jObject["meta"]["tracking_params"]["listingSqFt"];
-                //    client1.Address.PropertyInfo.Baths = (int)jObject["meta"]["tracking_params"]["listingBaths"];
-                //    client1.Address.PropertyInfo.Price = (double)jObject["meta"]["tracking_params"]["listingPrice"];
-                //}
-
 
                 return View(client1);
             }
@@ -177,32 +161,51 @@ namespace RealEstate.Controllers
 
         }
 
-       
 
-        // GET: Clients/Edit/5
-        public ActionResult Edit(int id)
+
+        public async Task<IActionResult> Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var client = await _context.Client.FindAsync(id);
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            return View(client);
         }
 
-        // POST: Clients/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, Client client)
         {
-            try
+            if (id != client.ClientId)
             {
-                // TODO: Add update logic here
+                return NotFound();
+            }
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+            if (ModelState.IsValid)
             {
-                return View();
+                try
+                {
+                    _context.Update(client);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                   
+                }
+                return RedirectToAction("Index");
             }
+
+            return View(client);
         }
 
 
-       
+
     }
 }

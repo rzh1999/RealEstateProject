@@ -33,7 +33,7 @@ namespace RealEstate.Models
         [Display(Name = "Email Address:")]
         public string EmailAddress { get; set; }
 
-        [Display(Name = "Telephone Number")]
+        [Display(Name = "Telephone Number:")]
         public string PhoneNumber { get; set; }
         [Display(Name = "Login Id:")]
         [ForeignKey("IdentityUser")]

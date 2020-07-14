@@ -34,9 +34,8 @@
                     Closing Representative
                 </td>
                 <td>
-                    <a asp-action="EditChecklist" asp-route-id="@item.ClosingRepId">See Checklist</a> |
-                    <a asp-action="ClientDetails" asp-route-id="@item.ClosingRepId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ClosingRepId">Delete</a>
+                    <a asp-action="ClosingRepDetails" asp-route-id="@item.ClosingRepId">Details</a> |
+                    <a asp-action="ClosingRepDelete" asp-route-id="@item.ClosingRepId">Delete</a>
                 </td>
             </tr>
         }
@@ -55,8 +54,8 @@
                     Loan Officer
                 </td>
                 <td>
-                    <a asp-action="Details" asp-controller="LoanOfficer" asp-route-id="@item.LoanOfficerId">Details</a> |
-                    <a asp-action="Delete" asp-controller="LoanOfficer" asp-route-id="@item.LoanOfficerId">Delete</a>
+                    <a asp-action="LoanOfficerDetails" asp-route-id="@item.LoanOfficerId">Details</a> |
+                    <a asp-action="DeleteLoanOfficer" asp-route-id="@item.LoanOfficerId">Delete</a>
                 </td>
             </tr>
         }

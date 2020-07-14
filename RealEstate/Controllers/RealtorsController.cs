@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using RealEstate.Data;
 using RealEstate.Models;
 
@@ -41,7 +42,9 @@ namespace RealEstate.Controllers
             {
                 return RedirectToAction("Create");
             }
-            var applicationDbContext = _context.Client;
+            var applicationDbContext = _context.Client
+                .Include(c => c.Realtor)
+                .Include(l => l.LoanOfficer);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -53,7 +56,10 @@ namespace RealEstate.Controllers
             }
 
             var client = await _context.Client
-                .Where(r => r.ClientId == id).Include(c => c.Realtor)
+                .Where(r => r.ClientId == id)
+                .Include(c => c.Realtor)
+                .Include(a => a.Address)
+                .Include(l => l.LoanOfficer)
                 .FirstOrDefaultAsync();
             if (client == null)
             {
@@ -63,7 +69,7 @@ namespace RealEstate.Controllers
             //client.Realtor = await _context.Realtor.Where(r => r.RealtorId == client.RealtorId).FirstOrDefaultAsync();
             //client.LoanOfficer = await _context.Realtor .Where(r => r.LoanOfficerId == client.LoanOfficerId).FirstOrDefaultAsync();
             //client.ClosingRep = await _context.ClosingRep.Where(r => r.ClosingRepId == client.ClosingRepId).FirstOrDefaultAsync();
-            
+
 
             return View(client);
         }
@@ -98,6 +104,24 @@ namespace RealEstate.Controllers
 
             return View(view);
 
+        }
+
+        // GET: Realtors/Details/5
+        public async Task<IActionResult> LoanOfficerDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var loanOfficer = await _context.LoanOfficer
+                .FirstOrDefaultAsync(m => m.LoanOfficerId == id);
+            if (loanOfficer == null)
+            {
+                return NotFound();
+            }
+
+            return View(loanOfficer);
         }
 
 
@@ -166,9 +190,9 @@ namespace RealEstate.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                        throw;
+                    throw;
                 }
-                return RedirectToAction("ClientDetails", new { id = _context.Client.Where(c => c.ChecklistId == id).FirstOrDefault().ClientId});
+                return RedirectToAction("ClientDetails", new { id = _context.Client.Where(c => c.ChecklistId == id).FirstOrDefault().ClientId });
             }
             return View(id);
         }
@@ -222,7 +246,6 @@ namespace RealEstate.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", realtor.IdentityUserId);
             return View(realtor);
         }
 
@@ -260,5 +283,81 @@ namespace RealEstate.Controllers
         {
             return _context.Realtor.Any(e => e.RealtorId == id);
         }
+
+        // GET: Realtors/Delete/5
+        public async Task<IActionResult> DeleteLoanOfficer(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var loanOfficer = await _context.LoanOfficer
+                .FirstOrDefaultAsync(m => m.LoanOfficerId == id);
+            if (loanOfficer == null)
+            {
+                return NotFound();
+            }
+
+            return View(loanOfficer);
+        }
+
+        // POST: Realtors/Delete/5
+        [HttpPost, ActionName("DeleteLoanOfficer")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteLoanOfficerConfirmed(int id)
+        {
+            var realtor = await _context.Realtor.FindAsync(id);
+            _context.Realtor.Remove(realtor);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        // GET: Realtors/Edit/5
+        public async Task<IActionResult> AddClientRepresentatives(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            ViewBag.LoanOfficerId = new SelectList(_context.LoanOfficer, "LoanOfficerId", "FirstName");
+
+            var client = await _context.Client.FindAsync(id);
+            if (client == null)
+            {
+                return NotFound();
+            }
+            return View(client);
+        }
+
+        // POST: Realtors/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddClientRepresentatives(int id, Client client)
+        {
+            if (id != client.ClientId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(client);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    throw;
+                }
+                return RedirectToAction("ClientList");
+            }
+            return View(client);
+        }
     }
 }
+
+

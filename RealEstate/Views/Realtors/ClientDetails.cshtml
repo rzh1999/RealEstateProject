@@ -87,12 +87,6 @@
             @Html.DisplayFor(model => model.ClosingRep.FirstName) @Html.DisplayFor(model => model.ClosingRep.LastName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Checklist)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Checklist.ChecklistId)
-        </dd>
-        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Address.StreetAddress)
         </dt>
         <dd class="col-sm-10">
@@ -120,5 +114,6 @@
 </div>
 <div>
     <a asp-action="EditChecklist" asp-route-id="@Model.ChecklistId">See Home Buying Checklist</a> |
-    <a asp-action="Index">Home</a>
+    <a asp-action="AddClientRepresentatives" asp-route-id="@Model.ClientId">Add Representative</a> |
+    <a asp-action="Index">Back to List</a>
 </div>
